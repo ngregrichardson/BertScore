@@ -1,17 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+
 <head>
-	<title>Score</title>
-	<script src="score.js" type="text/javascript"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <title>BertScore</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <style>
+		body {
+		  background-color: #AB0000 !important;
+		  margin: 0;
+			font-size: 130%;
+		}
+
+		h4 {
+		  color: white !important;
+		}
+
+		input {
+			width: 250px;
+		}
+
+		select {
+			margin: 10px 0px 10px 0px;
+			width: 250px;
+			height: 36px;
+			animation-duration: 5s;
+		}
+
+		td {
+		  padding: 10px;
+		  text-align: center;
+			border-bottom: 1px solid #ddd;
+			cursor: default;
+		}
+
+    table {
+      text-align: center;
+      border-spacing: 0px;
+      width: 100%;
+			color: white;
+    }
+
+    th {
+      color: white;
+      padding: 5px 15px;
+      cursor: default;
+    }
+
+    #matches tr:hover {
+      background-color: Gray;
+    }
+
+    #tableHeader tr:hover {
+      background-color: transparent !important;
+    }
+
+    td a {
+      display: block;
+      text-decoration: none;
+    }
+
+    .winner {
+      font-weight: bold;
+    }
+
+    .loser {
+      font-weight: normal;
+    }
+
+		@keyframes error {
+			0% {color: black;}
+			10% {color: red;}
+			100% {color: black;}
+		}
+  </style>
 </head>
+
 <body>
-	<table id="matches">
-	<tr>
-		<td>Match Number</td>
-		<td>Red Score</td>
-		<td>Blue Score</td>
-	</tr>
-	</table>
+  <!--CONTENT-->
+  <div class="container" style="background-color:#333;">
+    <div class="well well-sm" style="display: inline-block; left: 30%; position: relative;">
+      <h4 class="media-heading" style="text-align:center; padding: 5px;" id="eventName"></h4>
+			<input type="text" name ="teamInput" id="teamInput" placeholder="Team Number..." />
+			<button name="updateTeam" onclick="updateTeamEvents()">Update Team</button><br />
+			<select onchange="updateList()" id="eventList">
+			</select>
+			<button style="margin-left: 0px;" name="updateEvent" onclick="updateList()">Update Event</button>
+      <table id="matches">
+      </table>
+    </div>
+  </div>
+  <!--SCRIPTS-->
+	<script src="jquery-3.3.1.js"></script>
+  <script src="events.js"></script>
 </body>
+
 </html>
