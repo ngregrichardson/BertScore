@@ -2,10 +2,8 @@
 <html>
 
 <head>
-  <title>BertScore</title>
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <style>
-		body {
+    body {
 		  background-color: #AB0000 !important;
 		  margin: 0;
 			font-size: 130%;
@@ -77,20 +75,19 @@
 
 <body>
   <!--CONTENT-->
-  <div class="container" style="background-color:#333;">
-    <div class="well well-sm" style="display: inline-block; left: 30%; position: relative;">
-      <h4 class="media-heading" style="text-align:center; padding: 5px;" id="eventName"></h4>
-			<input type="text" name ="teamInput" id="teamInput" placeholder="Team Number..." />
-			<button name="updateTeam" onclick="updateTeamEvents()">Update Team</button><br />
-			<select onchange="updateList()" id="eventList">
-			</select>
-			<button style="margin-left: 0px;" name="updateEvent" onclick="updateList()">Update Event</button>
+  <div style="background-color:#333;">
+    <div style="display: inline-block; left: 30%; position: relative;">
+      <h4 style="text-align:center; padding: 5px;" id="eventName"></h4>
+      <input type="text" name="teamInput" id="teamInput" placeholder="Team Number..." />
+      <button name="updateTeam" onclick="updateTeamEvents()">Update Team</button><br />
+      <select onchange="updateList()" id="eventList">
+      </select>
+      <button style="margin-left: 0px;" name="updateEvent" onclick="updateList()">Update Event</button>
       <table id="matches">
       </table>
     </div>
   </div>
   <!--SCRIPTS-->
-	<script src="jquery-3.3.1.js"></script>
   <script src="events.js"></script>
 </body>
 
