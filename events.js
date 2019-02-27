@@ -19,27 +19,23 @@ function updateEvents() {
   clearMatches();
   clearEvents();
 
-  $.get('https://www.thebluealliance.com/api/v3/team/frc' + teamInput.val() + '/events/2018', { headers: { 'X-TBA-Auth-Key': teamKey }, eventDataType: 'json' }, function (data) {
-    console.log(data);
-  });
-
   // This requests information from TBA of all events the team has participated in
-  // $.ajax({
-  //   url: 'https://www.thebluealliance.com/api/v3/team/frc' + teamInput.val() + '/events/2018', // Creates the URL
-  //   headers: {
-  //     'X-TBA-Auth-Key': teamKey
-  //   },
-  //   method: 'GET',
-  //   eventDataType: 'json',
-  //   success: function (events) {
-  //     for (var i = 0; i < events.length; i++) { // For every event
-  //       // Append it to the dropdown
-  //       eventList.append('<option value="' + events[i].event_code + '">' + events[i].name + '</option>');
-  //       // Map the code and the name
-  //       eventMap[events[i].event_code] = events[i].name;
-  //     }
-  //   }
-  // });
+  $.ajax({
+    url: 'https://www.thebluealliance.com/api/v3/team/frc' + teamInput.val() + '/events/2018', // Creates the URL
+    headers: {
+      'X-TBA-Auth-Key': teamKey
+    },
+    method: 'GET',
+    eventDataType: 'json',
+    success: function (events) {
+      for (var i = 0; i < events.length; i++) { // For every event
+        // Append it to the dropdown
+        eventList.append('<option value="' + events[i].event_code + '">' + events[i].name + '</option>');
+        // Map the code and the name
+        eventMap[events[i].event_code] = events[i].name;
+      }
+    }
+  });
 }
 
 // Run when Update Event button is hit or dropdown is changed
