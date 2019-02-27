@@ -2,8 +2,8 @@
 var eventKey = 'JQWx3np1kuYKxcEzD5febqWrQAuYhFcYtFJ3gUb8Z0gthWwSb5397tkvdqiTv8oc';
 var teamKey = '6um4nzQPqPd0ww0vjUxfc0gJcGHe9OOsmK7PpjOhDfwZhPFWbme4PYpOwb3Ryos9';
 
-var teamInput; // Team number input
-var eventList; // Event dropdown
+var teamInput = $('#teamInput'); // Team number input
+var eventList = $('#eventList');; // Event dropdown
 var eventData; // Holds the data for the events
 
 var quals = []; // Qualifications
@@ -13,16 +13,8 @@ var finals = []; // Finals
 
 var eventMap = {}; // Maps the event keys to the event names
 
-$(function() { // Runs on start
-  // Gets the team # input field and the event dropdown
-  teamInput = $('#teamInput');
-  eventList = $('#eventList');
-  // Sets the default dropdown message
-  eventList.append('<option>Choose your team #...</option>');
-});
-
 // Run when Update Team button is hit
-function updateTeamEvents() {
+function updateEvents() {
   // Clear the event list and match information
   clearMatches();
   clearEvents();
@@ -35,27 +27,21 @@ function updateTeamEvents() {
     },
     method: 'GET',
     eventDataType: 'json',
-    success: function(events) {
-      // Updates the dropdown menu with the new data
-      updateSelectMenu(events);
+    success: function (events) {
+      for (var i = 0; i < events.length; i++) { // For every event
+        // Append it to the dropdown
+        eventList.append('<option value="' + events[i].event_code + '">' + events[i].name + '</option>');
+        // Map the code and the name
+        eventMap[events[i].event_code] = events[i].name;
+      }
     }
   });
 }
 
-// Add information to the event select menu
-function updateSelectMenu(events) {
-  for (var i = 0; i < events.length; i++) { // For every event
-    // Append it to the dropdown
-    eventList.append('<option value="' + events[i].event_code + '">' + events[i].name + '</option>');
-    // Map the code and the name
-    eventMap[events[i].event_code] = events[i].name;
-  }
-}
-
 // Run when Update Event button is hit or dropdown is changed
-function updateList() {
+function selectEvent() {
   // If the selected value is still the default
-  if($('#eventList option:selected').val() === "Choose your team #...") {
+  if ($('#eventList option:selected').val() === "Choose your team #...") {
     eventList.css("animation-name", "error"); // Run an error animation
     return; // Exit
   }
@@ -67,7 +53,7 @@ function updateList() {
     },
     method: 'GET',
     eventDataType: 'json',
-    success: function(matches) {
+    success: function (matches) {
       eventData = matches; // Make the match data global
       updateMatches(); // Update the matches table
     }
@@ -122,16 +108,16 @@ function clearEvents() {
 
 // This sorts the matches in chronological order per match type (Qual 1, Qual 2, Quarter-Final 1, etc.)
 function sortLists() {
-  quals.sort(function(a, b) {
+  quals.sort(function (a, b) {
     return a[1] - b[1];
   });
-  quarts.sort(function(a, b) {
+  quarts.sort(function (a, b) {
     return a[1] - b[1];
   });
-  semis.sort(function(a, b) {
+  semis.sort(function (a, b) {
     return a[1] - b[1];
   });
-  finals.sort(function(a, b) {
+  finals.sort(function (a, b) {
     return a[1] - b[1];
   });
 }

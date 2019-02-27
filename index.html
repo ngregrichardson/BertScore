@@ -1,21 +1,21 @@
-<!doctype html>
 <html>
 
 <body>
   <!--CONTENT-->
-  <div style="background-color:#333;">
-    <div style="display: inline-block; left: 30%; position: relative;">
-      <h4 style="text-align:center; padding: 5px;" id="eventName"></h4>
-      <input type="text" name="teamInput" id="teamInput" placeholder="Team Number..." />
-      <button name="updateTeam" onclick="updateTeamEvents()">Update Team</button><br />
-      <select onchange="updateList()" id="eventList">
+  <div>
+    <div>
+      <h4 id="eventName"></h4>
+      <input type="text" name="teamInput" id="teamInput" oninput="updateEvents()" placeholder="Team Number..." />
+      <select oninput="selectEvent()" id="eventList">
+        <option>Choose your team #...</option>
       </select>
-      <button style="margin-left: 0px;" name="updateEvent" onclick="updateList()">Update Event</button>
       <table id="matches">
       </table>
     </div>
   </div>
   <!--SCRIPTS-->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
   <script src="events.js"></script>
 </body>
 
