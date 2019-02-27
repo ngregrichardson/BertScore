@@ -125,7 +125,7 @@ function sortLists() {
 // This passes all of the values into the table
 function updateTable() {
   $('#eventName').innerHTML = eventMap[$('#eventList option:selected').val()];
-  $('table#matches').append('<thead id="tableHeader"><th>Match</th><th>Red Score</th><th>Blue Score</th></thead>');
+  $('table#matches').append('<thead id="tableHeader"><th>Match</th><th>Red</th><th>Blue</th></thead>');
   for (var i = 0; i < quals.length; i++) {
     $('table#matches').append('<tr><td><a href="http://www.' + quals[i][4] + '.com/watch?v=' + quals[i][5] + '" title="Watch video" target="_blank" style="color:' + onAlliance(i) + '!important;">' + quals[i][0] + ' ' + quals[i][1] + '</a></td><td style="color:rgb(227, 76, 38);" class="' + redWinner(i) + '">' + quals[i][2] + '</td><td style="color:rgb(39, 71, 146);" class="' + blueWinner(i) + '">' + quals[i][3] + '</td></tr>');
   }
