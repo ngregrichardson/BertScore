@@ -54,9 +54,13 @@ function selectEvent() {
     headers: {
       'X-TBA-Auth-Key': eventKey
     },
+    statusCode: {
+      404: function () { }
+    },
     method: 'GET',
     eventDataType: 'json',
     success: function (matches) {
+      console.log(matches);
       eventData = matches; // Make the match data global
       updateMatches(); // Update the matches table
     }
