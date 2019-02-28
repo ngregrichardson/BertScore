@@ -28,7 +28,6 @@ function updateEvents() {
     method: 'GET',
     eventDataType: 'json',
     success: function (events) {
-      clearEvents();
       console.log(events);
       for (var i = 0; i < events.length; i++) { // For every event
         // Append it to the dropdown
