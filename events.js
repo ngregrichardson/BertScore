@@ -35,6 +35,7 @@ function updateEvents() {
         // Map the code and the name
         eventMap[events[i].event_code] = events[i].name;
       }
+      clearMatches();
       selectEvent();
     }
   });
