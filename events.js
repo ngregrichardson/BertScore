@@ -15,27 +15,27 @@ var eventMap = {}; // Maps the event keys to the event names
 
 // Run when Update Team button is hit
 function updateEvents() {
-  // Clear the event list and match information
-  clearMatches();
-  clearEvents();
-
   // This requests information from TBA of all events the team has participated in
   $.ajax({
     url: 'https://www.thebluealliance.com/api/v3/team/frc' + teamInput.val() + '/events/2018', // Creates the URL
     headers: {
       'X-TBA-Auth-Key': teamKey
     },
+    statusCode: {
+      404: function () { }
+    },
     method: 'GET',
     eventDataType: 'json',
     success: function (events) {
       console.log(events);
+      clearMatches();
+      clearEvents();
       for (var i = 0; i < events.length; i++) { // For every event
         // Append it to the dropdown
         eventList.append('<option value="' + events[i].event_code + '">' + events[i].name + '</option>');
         // Map the code and the name
         eventMap[events[i].event_code] = events[i].name;
       }
-      clearMatches();
       selectEvent();
     }
   });
