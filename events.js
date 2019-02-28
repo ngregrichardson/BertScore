@@ -29,6 +29,7 @@ function updateEvents() {
     eventDataType: 'json',
     success: function (events) {
       clearEvents();
+      console.log(events);
       for (var i = 0; i < events.length; i++) { // For every event
         // Append it to the dropdown
         eventList.append('<option value="' + events[i].event_code + '">' + events[i].name + '</option>');
