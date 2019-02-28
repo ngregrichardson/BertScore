@@ -30,7 +30,7 @@ function updateEvents() {
       console.log(events);
       clearMatches();
       clearEvents();
-      if (events.length < 0) eventList.append('<option value="Choose a team #...">Choose a team #...</option>');
+      if (events.length == 0) eventList.append('<option value="Choose a team #...">Choose a team #...</option>');
       for (var i = 0; i < events.length; i++) { // For every event
         // Append it to the dropdown
         eventList.append('<option value="' + events[i].event_code + '">' + events[i].name + '</option>');
