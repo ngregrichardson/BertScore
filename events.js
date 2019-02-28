@@ -15,7 +15,12 @@ var eventMap = {}; // Maps the event keys to the event names
 
 // Run when Update Team button is hit
 function updateEvents() {
-  if (teamInput.val() == '') clearMatches(); clearEvents(); eventList.append('<option value="Choose a team #...">Choose a team #...</option>'); return;
+  if (teamInput.val() == '') {
+    clearMatches();
+    clearEvents();
+    eventList.append('<option value="Choose a team #...">Choose a team #...</option>');
+    return;
+  }
   // This requests information from TBA of all events the team has participated in
   $.ajax({
     url: 'https://www.thebluealliance.com/api/v3/team/frc' + teamInput.val() + '/events/2018', // Creates the URL
