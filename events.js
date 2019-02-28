@@ -44,7 +44,7 @@ function updateEvents() {
 // Run when Update Event button is hit or dropdown is changed
 function selectEvent() {
   // If the selected value is still the default
-  if ($('#eventList option:selected').val() === "Choose your team #...") {
+  if ($('#eventList option:selected').val() == "Choose a team #..." || $('#eventList option:selected').val() == undefined) {
     eventList.css("animation-name", "error"); // Run an error animation
     return; // Exit
   }
